@@ -1,15 +1,19 @@
-### 
+
+Live streaming upload to S3 by javascript.
+
+Just file upload with form element just-upload.html
+File upload after streaming in index.html
 
 The user will need to grant access to the Camera and Microphone using the getUserMedia API. Using this stream, RecordRTC will be able to start the video recording.We will use following libraries.
 
-####HTML code
+
 ```html
 <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.5/RecordRTC.js"></script>
 ```
 ### 
 The following example shows how to implement a basic start/stop recorder using RecordRTC :
-####HTML code
+
 ```html
 	<button id="btn-start-recording">
             Start Recording
@@ -23,7 +27,6 @@ The following example shows how to implement a basic start/stop recorder using R
             Cancel Upload
         </button>
 ```
-####Javascript　
 
 ```javascript
 document.getElementById('btn-start-recording').addEventListener("click", function(){
@@ -33,7 +36,7 @@ document.getElementById('btn-start-recording').addEventListener("click", functio
         // Request access to the media devices
         navigator.mediaDevices.getUserMedia({
             audio: true, 
-            video: false
+            video: true
         }).then(function(stream) {
             // Display a live preview on the video element of the page
             setSrcObject(stream, video);
@@ -45,7 +48,7 @@ document.getElementById('btn-start-recording').addEventListener("click", functio
 
             // Initialize the recorder
             recorder = new RecordRTCPromisesHandler(stream, {
-                mimeType: 'audio/webm',
+                mimeType: 'video/webm',
                 bitsPerSecond: 128000
             });
 
@@ -146,7 +149,7 @@ Obtain the credentials needed to configure the SDK by calling the CognitoIdentit
 ```html
  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script> // Include in html head
 ```
-####Javascript　
+
 ```javascript
 AWS.config.region = 'us-east-2'; // 1. Enter your region
 
@@ -168,7 +171,7 @@ var bucket = new AWS.S3({
 ```
 ###  
 To upload a file to Amazon S3 bucket, when stop recording
-####Javascript　
+
 ```javascript
 
  function dataURLtoFile(dataurl, filename) {
