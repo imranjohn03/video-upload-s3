@@ -2,6 +2,7 @@
 Live streaming upload to S3 by javascript.
 
 Just file upload with form element just-upload.html
+
 File upload after streaming in index.html
 
 The user will need to grant access to the Camera and Microphone using the getUserMedia API. Using this stream, RecordRTC will be able to start the video recording.We will use following libraries.
