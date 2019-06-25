@@ -242,5 +242,3 @@ To upload a file to Amazon S3 bucket, when stop recording
     }, false);
 
 ```
-
-###End
